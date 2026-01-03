@@ -16,8 +16,8 @@ This project turns a **Franzininho WiFi (ESP32-S2)** and a **WeAct 2.9" E-Paper 
 
 | Component | Pin (ESP32-S2) |
 | --- | --- |
-| **WeAct 2.9" E-Paper** | DC: 0, CS: 1, BUSY: 2, RES: 3 |
-| **SHT21 Sensor** | SDA: 35, SCL: 36 |
+| **WeAct 2.9" E-Paper** | DC: 0, CS: 1, BUSY: 2, RES: 3 DATA: 35, CLK: 36|
+| **SHT21 Sensor** | SDA: 8, SCL: 9 |
 | **Microcontroller** | Franzininho WiFi (ESP32-S2) |
 
 ---

@@ -140,9 +140,9 @@ const unsigned char mylogo[] PROGMEM = {
 long subs;
 
 // Configurações da rede WiFi à se conectar
-const char* ssid = "";
-const char* password = "";
-const char* freeCurrencyAPIHere = "";
+const char* ssid = "Clovis 2.4G";
+const char* password = "99143304";
+const char* freeCurrencyAPIHere = "fca_live_VY5LigvrlRZa8DDEjEmC6KKqZXVjn4krRXHLkoA3";
 String payload;
 String payload2;
 
@@ -166,8 +166,8 @@ HTTPClient http2; // o objeto da classe HTTPClient
 #define EPD_SPI &SPI // primary SPI
 #endif
 
-const char* apiKey   = "";
-const char* channelIdNet = ""; // channel ID for the first channel
+const char* apiKey   = "AIzaSyAJXHJB2WRC6vovSbXoclCf0apfKDbNRcQ";
+const char* channelIdNet = "UC6JQP0pJM_IIRlb3cXsdmVg"; // channel ID for the first channel
 long subscribers= 0;
 long repeatTime= 0;
 bool startup= true;
@@ -195,12 +195,13 @@ bool startup= true;
 // EPD_BUSY, EPD_SPI);
 
 /* Uncomment the following line if you are using 2.9" EPD */
-// Adafruit_IL0373 display(296, 128, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS,
-// EPD_BUSY, EPD_SPI); #define FLEXIBLE_290
+/*Adafruit_IL0373 display(296, 128, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS,
+EPD_BUSY, EPD_SPI); 
+#define FLEXIBLE_290*/
 
 /* Uncomment the following line if you are using 4.2" tricolor EPD */
-// Adafruit_IL0398 display(300, 400, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS,
-// EPD_BUSY, EPD_SPI);
+/*Adafruit_IL0398 display(300, 400, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS,
+EPD_BUSY, EPD_SPI);*/
 
 // Uncomment the following line if you are using 2.9" EPD with SSD1680
 // THIS IS MY DISPLAY MODEL, YOURS MAY VARY
@@ -213,7 +214,12 @@ float humidity; // variable to store hemidity
 void setup() {
   // put your setup code here, to run once:
   display.begin();
+
+  // VERY IMPORTANT for IL0373
   display.clearBuffer();
+  display.display();      // forces full refresh
+  delay(2000);            // allow panel power stabilization
+  
   Wire.begin();		// begin Wire(I2C)
   Serial.begin(115200);
 
@@ -247,7 +253,7 @@ void loop() {
       Serial.println("[HTTP] Iniciando requisição de moedas...");
       
       // Request 1: BRL
-      http.begin("https://api.freecurrencyapi.com/v1/latest?apikey=YoutAPIkeyHere");
+      http.begin("https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_VY5LigvrlRZa8DDEjEmC6KKqZXVjn4krRXHLkoA3");
       int httpCode = http.GET();
 
       if (httpCode == HTTP_CODE_OK) {
